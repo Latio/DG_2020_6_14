@@ -1,0 +1,12 @@
+#include "MeshUnion.h"
+
+
+
+MeshUnion::MeshUnion()
+{
+}
+
+
+MeshUnion::~MeshUnion()
+{
+}

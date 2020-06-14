@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{C7C95193-05C4-4AA1-BD3C-24ED0CF0F77C}</ProjectGuid>
+    <RootNamespace>DG</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>C:\Program Files %28x86%29\Windows Kits\10\Include\10.0.15063.0\ucrt：;$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>D:\DG_wrj\OpenBLAS-0.3.6-x64\include;D:\DG_wrj\netcdf-cxx4-4.3.1\cxx4;D:\netCDF_4.7.1\netCDF 4.7.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>D:\netCDF_4.7.1\netCDF 4.7.1\lib;D:\DG_wrj\OpenBLAS-0.3.6-x64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libopenblas.dll.a;netcdf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>D:\DG_wrj\OpenBLAS-0.3.6-x64\include;D:\DG_wrj\netCDF4.7.1-NC4-64\netCDF 4.7.1\include;D:\netCDF_4.7.1\netCDF 4.7.1\include;D:\MATLAB\extern\include;D:\DG_wrj\netcdf-cxx4-4.3.1\cxx4;D:\DG_wrj\netcdf-cxx4-4.3.1\netcdf-cxx4-4.3.1\cxx4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>D:\DG_wrj\OpenBLAS-0.3.6-x64\lib;D:\DG_wrj\netCDF4.7.1-NC4-64\netCDF 4.7.1\lib;D:\netCDF_4.7.1\netCDF 4.7.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libopenblas.dll.a;netcdf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <StackReserveSize>
+      </StackReserveSize>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="AbstractDiffSolver.cpp" />
+    <ClCompile Include="AbstractOutputFile.cpp" />
+    <ClCompile Include="Cell.cpp" />
+    <ClCompile Include="c_boundary_EvaluateStrongFormEdgeRHS.c" />
+    <ClCompile Include="c_boundary_EvaluateSurfValue.c" />
+    <ClCompile Include="c_Evaluate.c" />
+    <ClCompile Include="c_EvaluateFlux2d.c" />
+    <ClCompile Include="c_EvaluatePostFunc2d.c" />
+    <ClCompile Include="c_EvaluateSourceTopography2d.c" />
+    <ClCompile Include="c_EvaluateSurfValue.c" />
+    <ClCompile Include="c_EvaluateVertAverage.c" />
+    <ClCompile Include="c_GetMeshIntegralValue.c" />
+    <ClCompile Include="c_HydrostaticReconstruction.c" />
+    <ClCompile Include="c_inner_EvaluateSurfValue.c" />
+    <ClCompile Include="c_EvaluateSurfFlux.c" />
+    <ClCompile Include="c_inner_EvaluateStrongFromEdgeRHS.c" />
+    <ClCompile Include="c_ImposeBoundaryCondition.c" />
+    <ClCompile Include="c_UpdateWDWetDryState.c" />
+    <ClCompile Include="c_VertLimit2d.c" />
+    <ClCompile Include="FrictionTermSolver.cpp" />
+    <ClCompile Include="GetMatrixInverse.cpp" />
+    <ClCompile Include="NdgHorizDiffSolver.cpp" />
+    <ClCompile Include="NdghydrostaticSolver2d.cpp" />
+    <ClCompile Include="NdgQuadFreeStrongFormAdvSolver2d.cpp" />
+    <ClCompile Include="CoriolisTermSolver.cpp" />
+    <ClCompile Include="NdgSWEHorizSmagrinskyDiffSolver.cpp" />
+    <ClCompile Include="NdgWaveCurrentVisSolver2d.cpp" />
+    <ClCompile Include="RollerWaveRadiationSolver.cpp" />
+    <ClCompile Include="SWE2d.c" />
+    <ClCompile Include="SWEAbstract2d.cpp" />
+    <ClCompile Include="SWEConventional2d.cpp" />
+    <ClCompile Include="SWEElevationLimiter2d.cpp" />
+    <ClCompile Include="SWEFaceFluxSolver2d.cpp" />
+    <ClCompile Include="SWEHLLNumFluxSolver2d.cpp" />
+    <ClCompile Include="SWEPrebalanceVolumeFlux2d.cpp" />
+    <ClCompile Include="SWEPreBlanaced2d.cpp" />
+    <ClCompile Include="SWETopographySourceTerm2d.cpp" />
+    <ClCompile Include="c_UpdateTimeInterval2d.c" />
+    <ClCompile Include="new_delete.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MeshUnion.cpp" />
+    <ClCompile Include="BoundaryEdge.cpp" />
+    <ClCompile Include="Bcell.cpp" />
+    <ClCompile Include="MeshUnion_dim.cpp" />
+    <ClCompile Include="InnerEdge.cpp" />
+    <ClCompile Include="Icell.cpp" />
+    <ClCompile Include="ncAtt.cpp" />
+    <ClCompile Include="ncByte.cpp" />
+    <ClCompile Include="ncChar.cpp" />
+    <ClCompile Include="ncCheck.cpp" />
+    <ClCompile Include="ncCompoundType.cpp" />
+    <ClCompile Include="ncDim.cpp" />
+    <ClCompile Include="ncDouble.cpp" />
+    <ClCompile Include="ncEnumType.cpp" />
+    <ClCompile Include="ncException.cpp" />
+    <ClCompile Include="ncFile.cpp" />
+    <ClCompile Include="ncFloat.cpp" />
+    <ClCompile Include="ncGroup.cpp" />
+    <ClCompile Include="ncGroupAtt.cpp" />
+    <ClCompile Include="ncInt.cpp" />
+    <ClCompile Include="ncInt64.cpp" />
+    <ClCompile Include="ncOpaqueType.cpp" />
+    <ClCompile Include="ncShort.cpp" />
+    <ClCompile Include="ncString.cpp" />
+    <ClCompile Include="ncType.cpp" />
+    <ClCompile Include="ncUbyte.cpp" />
+    <ClCompile Include="ncUint.cpp" />
+    <ClCompile Include="ncUint64.cpp" />
+    <ClCompile Include="ncUshort.cpp" />
+    <ClCompile Include="ncVar.cpp" />
+    <ClCompile Include="ncVarAtt.cpp" />
+    <ClCompile Include="ncVlenType.cpp" />
+    <ClCompile Include="NdgPhysMat.cpp" />
+    <ClCompile Include="WindTermSolver.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AbstractDiffSolver.h" />
+    <ClInclude Include="AbstractOutputFile.h" />
+    <ClInclude Include="Cell.h" />
+    <ClInclude Include="FrictionTermSolver.h" />
+    <ClInclude Include="NdgHorizDiffSolver.h" />
+    <ClInclude Include="NdghydrostaticSolver2d.h" />
+    <ClInclude Include="NdgQuadFreeStrongFormAdvSolver2d.h" />
+    <ClInclude Include="CoriolisTermSolver.h" />
+    <ClInclude Include="NdgSWEHorizSmagrinskyDiffSolver.h" />
+    <ClInclude Include="NdgWaveCurrentVisSolver2d.h" />
+    <ClInclude Include="RollerWaveRadiationSolver.h" />
+    <ClInclude Include="SWE2d.h" />
+    <ClInclude Include="new_delete.h" />
+    <ClInclude Include="MeshUnion.h" />
+    <ClInclude Include="BoundaryEdge.h" />
+    <ClInclude Include="Bcell.h" />
+    <ClInclude Include="MeshUnion_dim.h" />
+    <ClInclude Include="InnerEdge.h" />
+    <ClInclude Include="Icell.h" />
+    <ClInclude Include="NdgPhysMat.h" />
+    <ClInclude Include="SWE2d0.h" />
+    <ClInclude Include="SWEAbstract2d.h" />
+    <ClInclude Include="SWEConventional2d.h" />
+    <ClInclude Include="SWEElevationLimiter2d.h" />
+    <ClInclude Include="SWEFaceFluxSolver2d.h" />
+    <ClInclude Include="SWEHLLNumFluxSolver2d.h" />
+    <ClInclude Include="SWENumFlux2d.h" />
+    <ClInclude Include="SWEPrebalanceVolumeFlux2d.h" />
+    <ClInclude Include="SWEPreBlanaced2d.h" />
+    <ClInclude Include="SWETopographySourceTerm2d.h" />
+    <ClInclude Include="WindTermSolver.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

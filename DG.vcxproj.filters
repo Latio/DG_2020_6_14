@@ -1,0 +1,540 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="源文件\MeshUnion">
+      <UniqueIdentifier>{a9daa053-5333-47b5-ab22-76add35214e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\SWEAbstract2d">
+      <UniqueIdentifier>{43b14253-ddc3-492f-b579-e71490570df5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\MeshUnion">
+      <UniqueIdentifier>{30825ee5-a948-4cfa-98a6-859b3ba7b5bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\MeshUnion\InnerEdge">
+      <UniqueIdentifier>{49a88339-5f3b-4cd8-8cb2-bab9dfbd8acd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\MeshUnion\InnerEdge">
+      <UniqueIdentifier>{23791d9f-6e3f-47db-b30b-ffeb505dcc9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\MeshUnion\InnerEdge\private">
+      <UniqueIdentifier>{501f2b47-abcb-4459-a991-7a04da46896e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\SWEAbstract2d\private">
+      <UniqueIdentifier>{d28fe62f-5b09-48c7-9b2d-03df9786e3a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\MeshUnion\BoundaryEdge">
+      <UniqueIdentifier>{9659d9c2-8fa8-4487-9557-0a08cdda0bfb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\MeshUnion\Cell">
+      <UniqueIdentifier>{76122921-ee40-4e66-be87-5223d6662e38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\MeshUnion\BoundaryEdge">
+      <UniqueIdentifier>{bcbb578c-5f2a-459b-b831-a71630163a81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\MeshUnion\Cell">
+      <UniqueIdentifier>{c79511df-c884-4f01-8391-dd76e7394f85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\MeshUnion\Basic">
+      <UniqueIdentifier>{cff23b8d-3655-4d3e-8dbe-49e6e27680e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\MeshUnion\Basic">
+      <UniqueIdentifier>{9ae8c633-b1a3-4460-a8eb-dc5863ae7c99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Solver">
+      <UniqueIdentifier>{cc27a99c-5dee-48b9-9294-b1cc221ea9ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\NetCDF">
+      <UniqueIdentifier>{308bfc17-7e08-4b57-a9ca-d3c100078995}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Solver\SWEFaceFluxSolver2d">
+      <UniqueIdentifier>{a25f1f94-6dcf-4f4d-a99a-4837de8a92b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Solver">
+      <UniqueIdentifier>{de879350-d7ce-44c9-90ca-2328a28e9af4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Solver\SWEFaceFluxSolver2d">
+      <UniqueIdentifier>{2cc7019f-15a2-497e-9d2c-d31039d521e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Solver\SWEFaceFluxSolver2d\private">
+      <UniqueIdentifier>{cdedc2f9-5ec5-40ca-a5ee-95cdc6058592}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\NdgQuadFreeStrongFormAdvSolver2d">
+      <UniqueIdentifier>{b769995e-f7a6-470e-9559-f2fdbed1f15f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\NdgPhysMat">
+      <UniqueIdentifier>{4b86d17c-fe76-4f7d-9504-28e6b16786a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\NdgPhysMat">
+      <UniqueIdentifier>{4142e19e-73e3-4823-854c-6a26118ea901}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\NdgQuadFreeStrongFormAdvSolver2d">
+      <UniqueIdentifier>{1e9f454c-80bd-445b-8475-6f3137df7903}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\SWEAbstract2d">
+      <UniqueIdentifier>{77f996b5-b5d7-4377-b9ad-4460d52f6950}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Solver\SWEHLLNumFluxSolver2d">
+      <UniqueIdentifier>{8f19d478-c2a3-47b5-a711-d4594f987418}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Solver\SWEHLLNumFluxSolver2d">
+      <UniqueIdentifier>{df7258fb-d18b-4e37-abdf-7a910598014c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Solver\SWEHLLNumFluxSolver2d\private">
+      <UniqueIdentifier>{7202f371-6a76-4e23-97b5-b394423f8144}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\MeshUnion\BoundaryEdge\private">
+      <UniqueIdentifier>{6ed4c996-7d83-44cd-bc5a-3c1af3a15fdd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\SWEPreBlanaced2d">
+      <UniqueIdentifier>{f4cae2df-5cc1-44a9-a596-4114e10b90aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\SWEPreBlanaced2d">
+      <UniqueIdentifier>{5c85457a-7cda-4ffd-931e-ec38941e9020}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Solver\SWEPrebalanceVolumeFlux2d">
+      <UniqueIdentifier>{7b28c037-28ae-4a66-beb2-44df9e2837fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Solver\SWEPrebalanceVolumeFlux2d">
+      <UniqueIdentifier>{40c24d12-db36-4fb4-99e3-08f9626b8028}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\SWEConventional2d">
+      <UniqueIdentifier>{187db518-708b-48d1-b412-3aec0b08a8be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\SWEConventional2d">
+      <UniqueIdentifier>{eca8fa96-fb4b-4734-9137-d773fcf3d574}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Solver\SWEPrebalanceVolumeFlux2d\private">
+      <UniqueIdentifier>{d9416d73-2f35-4ac7-b22e-7243c1c60cbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Solver\SWESourceTerm2d">
+      <UniqueIdentifier>{24b43157-f408-4b5c-856e-d9ca69f076a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Solver\SWESourceTerm2d\SWETopographySourceTerm2d">
+      <UniqueIdentifier>{1db90796-7949-48bb-bdba-1324b3843bf6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Solver\SWESourceTerm2d\SWETopographySourceTerm2d\private">
+      <UniqueIdentifier>{bc14c292-d648-45a4-a21b-451e0861432e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Solver\SWESourceTerm2d">
+      <UniqueIdentifier>{ca00c47f-136e-4f83-958e-c54a291420f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Solver\SWESourceTerm2d\SWETopographySourceTerm2d">
+      <UniqueIdentifier>{46e1e39a-38ce-46a3-8cc3-6ceeaee5179b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Solver\SWESourceTerm2d\CoriolisTermSolver">
+      <UniqueIdentifier>{9e4ed06e-a478-4c51-ab81-a01df6978e39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Solver\SWESourceTerm2d\CoriolisTermSolver">
+      <UniqueIdentifier>{93082d38-9682-416a-9001-6ecc688e76a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Solver\SWESourceTerm2d\FrictionTermSolver">
+      <UniqueIdentifier>{40eef7e6-1bbc-4773-89f4-edb1f7b8e8c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Solver\SWESourceTerm2d\FrictionTermSolver">
+      <UniqueIdentifier>{cc9367ae-a348-4ebd-b0b3-1491e0e8c0f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Solver\SWESourceTerm2d\WindTermSolver">
+      <UniqueIdentifier>{3b951a31-80cf-4058-aa8c-ff9dd2cb59bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Solver\SWESourceTerm2d\WindTermSolver">
+      <UniqueIdentifier>{0333fe1d-03b1-400b-a417-d690a8433ed9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Solver\SWESourceTerm2d\NdghydrostaticSolver2d">
+      <UniqueIdentifier>{d9df547d-7ee3-4f91-8a53-2a8dee34752d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Solver\SWESourceTerm2d\NdghydrostaticSolver2d">
+      <UniqueIdentifier>{d168b6a7-547b-4f3d-a6e2-cc2f3e368c18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\MeshUnion\private">
+      <UniqueIdentifier>{d649e2db-9ade-49c0-9965-903757e9c904}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\MeshUnion\private">
+      <UniqueIdentifier>{e7df3de3-5838-42be-bae3-10f7e1c019e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\SWEConventional2d\private">
+      <UniqueIdentifier>{568f361c-e062-46bf-a8cf-77c3ba8776fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\AbstractOutputFile">
+      <UniqueIdentifier>{012e911f-64e3-4840-8198-ee4c82db1e8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\AbstractOutputFile">
+      <UniqueIdentifier>{01b101ae-7efb-4da2-ab0a-94499550ee25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Solver\SWEElevationLimiter2d">
+      <UniqueIdentifier>{49e487d1-cd54-4338-a0af-0d558ecf9dd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Solver\SWEElevationLimiter2d">
+      <UniqueIdentifier>{037477ea-330b-4c49-b9cf-e2f54c311d59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Solver\SWEElevationLimiter2d\private">
+      <UniqueIdentifier>{0bed1e40-18d0-4a65-94d2-9216209ce1a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Solver\NdgWaveCurrentVisSolver2d">
+      <UniqueIdentifier>{b1e9843d-1e1e-43b7-a2fe-f7bcf5b08645}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Solver\NdgWaveCurrentVisSolver2d">
+      <UniqueIdentifier>{6d98062b-c43b-4487-8649-7b5cf3ea256f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Solver\SWESourceTerm2d\RollerWaveRadiationSolver">
+      <UniqueIdentifier>{6a75fa70-7419-4b71-b4d6-2f88795baed2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Solver\SWESourceTerm2d\RollerWaveRadiationSolver">
+      <UniqueIdentifier>{d56d2733-40bb-4229-b47a-30dfeaed12c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Solver\NdgSWEHorizSmagrinskyDiffSolver">
+      <UniqueIdentifier>{dee842e5-a122-4396-8145-b0ff9f6acfdf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Solver\NdgSWEHorizSmagrinskyDiffSolver">
+      <UniqueIdentifier>{f5d1bb3e-29c5-47a9-9c7f-c00fabba752e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Solver\NdgSWEHorizSmagrinskyDiffSolver\NdgSWEHorizDiffSolver">
+      <UniqueIdentifier>{2f7a0088-55b7-4c35-867f-d4f02820a1cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Solver\NdgSWEHorizSmagrinskyDiffSolver\NdgSWEHorizDiffSolver\AbstractDiffSolver">
+      <UniqueIdentifier>{0bc3cd3c-3133-4ee7-a491-0188cba2e026}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Solver\NdgSWEHorizSmagrinskyDiffSolver\NdgSWEHorizDiffSolver\AbstractDiffSolver\AbstractDiffSolver">
+      <UniqueIdentifier>{4fe87ec1-4e74-4847-8e8c-535f538a9652}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Solver\NdgSWEHorizSmagrinskyDiffSolver\NdgSWEHorizDiffSolver">
+      <UniqueIdentifier>{7c539be1-8638-4802-bab4-3c98ef83d447}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Solver\NdgSWEHorizSmagrinskyDiffSolver\NdgSWEHorizDiffSolver\AbstractDiffSolver">
+      <UniqueIdentifier>{76fd79ad-70f3-4492-8a3d-6dc9595a5699}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Solver\NdgSWEHorizSmagrinskyDiffSolver\NdgSWEHorizDiffSolver\AbstractDiffSolver\private">
+      <UniqueIdentifier>{0ed18fa9-2b0f-4768-b456-12445fe6d21a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ncCheck.cpp">
+      <Filter>源文件\NetCDF</Filter>
+    </ClCompile>
+    <ClCompile Include="ncFile.cpp">
+      <Filter>源文件\NetCDF</Filter>
+    </ClCompile>
+    <ClCompile Include="ncAtt.cpp">
+      <Filter>源文件\NetCDF</Filter>
+    </ClCompile>
+    <ClCompile Include="ncByte.cpp">
+      <Filter>源文件\NetCDF</Filter>
+    </ClCompile>
+    <ClCompile Include="ncChar.cpp">
+      <Filter>源文件\NetCDF</Filter>
+    </ClCompile>
+    <ClCompile Include="ncCompoundType.cpp">
+      <Filter>源文件\NetCDF</Filter>
+    </ClCompile>
+    <ClCompile Include="ncDim.cpp">
+      <Filter>源文件\NetCDF</Filter>
+    </ClCompile>
+    <ClCompile Include="ncDouble.cpp">
+      <Filter>源文件\NetCDF</Filter>
+    </ClCompile>
+    <ClCompile Include="ncEnumType.cpp">
+      <Filter>源文件\NetCDF</Filter>
+    </ClCompile>
+    <ClCompile Include="ncException.cpp">
+      <Filter>源文件\NetCDF</Filter>
+    </ClCompile>
+    <ClCompile Include="ncFloat.cpp">
+      <Filter>源文件\NetCDF</Filter>
+    </ClCompile>
+    <ClCompile Include="ncGroup.cpp">
+      <Filter>源文件\NetCDF</Filter>
+    </ClCompile>
+    <ClCompile Include="ncGroupAtt.cpp">
+      <Filter>源文件\NetCDF</Filter>
+    </ClCompile>
+    <ClCompile Include="ncInt.cpp">
+      <Filter>源文件\NetCDF</Filter>
+    </ClCompile>
+    <ClCompile Include="ncInt64.cpp">
+      <Filter>源文件\NetCDF</Filter>
+    </ClCompile>
+    <ClCompile Include="ncOpaqueType.cpp">
+      <Filter>源文件\NetCDF</Filter>
+    </ClCompile>
+    <ClCompile Include="ncShort.cpp">
+      <Filter>源文件\NetCDF</Filter>
+    </ClCompile>
+    <ClCompile Include="ncString.cpp">
+      <Filter>源文件\NetCDF</Filter>
+    </ClCompile>
+    <ClCompile Include="ncType.cpp">
+      <Filter>源文件\NetCDF</Filter>
+    </ClCompile>
+    <ClCompile Include="ncUbyte.cpp">
+      <Filter>源文件\NetCDF</Filter>
+    </ClCompile>
+    <ClCompile Include="ncUint.cpp">
+      <Filter>源文件\NetCDF</Filter>
+    </ClCompile>
+    <ClCompile Include="ncUint64.cpp">
+      <Filter>源文件\NetCDF</Filter>
+    </ClCompile>
+    <ClCompile Include="ncUshort.cpp">
+      <Filter>源文件\NetCDF</Filter>
+    </ClCompile>
+    <ClCompile Include="ncVar.cpp">
+      <Filter>源文件\NetCDF</Filter>
+    </ClCompile>
+    <ClCompile Include="ncVarAtt.cpp">
+      <Filter>源文件\NetCDF</Filter>
+    </ClCompile>
+    <ClCompile Include="ncVlenType.cpp">
+      <Filter>源文件\NetCDF</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshUnion.cpp">
+      <Filter>源文件\MeshUnion</Filter>
+    </ClCompile>
+    <ClCompile Include="SWEAbstract2d.cpp">
+      <Filter>源文件\SWEAbstract2d</Filter>
+    </ClCompile>
+    <ClCompile Include="Icell.cpp">
+      <Filter>源文件\MeshUnion\InnerEdge</Filter>
+    </ClCompile>
+    <ClCompile Include="InnerEdge.cpp">
+      <Filter>源文件\MeshUnion\InnerEdge</Filter>
+    </ClCompile>
+    <ClCompile Include="Bcell.cpp">
+      <Filter>源文件\MeshUnion\BoundaryEdge</Filter>
+    </ClCompile>
+    <ClCompile Include="BoundaryEdge.cpp">
+      <Filter>源文件\MeshUnion\BoundaryEdge</Filter>
+    </ClCompile>
+    <ClCompile Include="Cell.cpp">
+      <Filter>源文件\MeshUnion\Cell</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshUnion_dim.cpp">
+      <Filter>源文件\MeshUnion\Basic</Filter>
+    </ClCompile>
+    <ClCompile Include="new_delete.cpp">
+      <Filter>源文件\MeshUnion\Basic</Filter>
+    </ClCompile>
+    <ClCompile Include="SWEFaceFluxSolver2d.cpp">
+      <Filter>源文件\Solver\SWEFaceFluxSolver2d</Filter>
+    </ClCompile>
+    <ClCompile Include="c_EvaluateSurfFlux.c">
+      <Filter>源文件\Solver\SWEFaceFluxSolver2d\private</Filter>
+    </ClCompile>
+    <ClCompile Include="NdgQuadFreeStrongFormAdvSolver2d.cpp">
+      <Filter>源文件\NdgQuadFreeStrongFormAdvSolver2d</Filter>
+    </ClCompile>
+    <ClCompile Include="NdgPhysMat.cpp">
+      <Filter>源文件\NdgPhysMat</Filter>
+    </ClCompile>
+    <ClCompile Include="SWE2d.c">
+      <Filter>源文件\SWEAbstract2d\private</Filter>
+    </ClCompile>
+    <ClCompile Include="SWEHLLNumFluxSolver2d.cpp">
+      <Filter>源文件\Solver\SWEHLLNumFluxSolver2d</Filter>
+    </ClCompile>
+    <ClCompile Include="c_Evaluate.c">
+      <Filter>源文件\Solver\SWEHLLNumFluxSolver2d\private</Filter>
+    </ClCompile>
+    <ClCompile Include="c_inner_EvaluateSurfValue.c">
+      <Filter>源文件\MeshUnion\InnerEdge\private</Filter>
+    </ClCompile>
+    <ClCompile Include="c_inner_EvaluateStrongFromEdgeRHS.c">
+      <Filter>源文件\MeshUnion\InnerEdge\private</Filter>
+    </ClCompile>
+    <ClCompile Include="c_boundary_EvaluateSurfValue.c">
+      <Filter>源文件\MeshUnion\BoundaryEdge\private</Filter>
+    </ClCompile>
+    <ClCompile Include="c_ImposeBoundaryCondition.c">
+      <Filter>源文件\SWEAbstract2d\private</Filter>
+    </ClCompile>
+    <ClCompile Include="c_HydrostaticReconstruction.c">
+      <Filter>源文件\SWEAbstract2d\private</Filter>
+    </ClCompile>
+    <ClCompile Include="c_boundary_EvaluateStrongFormEdgeRHS.c">
+      <Filter>源文件\MeshUnion\BoundaryEdge\private</Filter>
+    </ClCompile>
+    <ClCompile Include="SWEPrebalanceVolumeFlux2d.cpp">
+      <Filter>源文件\Solver\SWEPrebalanceVolumeFlux2d</Filter>
+    </ClCompile>
+    <ClCompile Include="SWEConventional2d.cpp">
+      <Filter>源文件\SWEConventional2d</Filter>
+    </ClCompile>
+    <ClCompile Include="SWEPreBlanaced2d.cpp">
+      <Filter>源文件\SWEPreBlanaced2d</Filter>
+    </ClCompile>
+    <ClCompile Include="c_EvaluateFlux2d.c">
+      <Filter>源文件\Solver\SWEPrebalanceVolumeFlux2d\private</Filter>
+    </ClCompile>
+    <ClCompile Include="c_EvaluateSourceTopography2d.c">
+      <Filter>源文件\Solver\SWESourceTerm2d\SWETopographySourceTerm2d\private</Filter>
+    </ClCompile>
+    <ClCompile Include="SWETopographySourceTerm2d.cpp">
+      <Filter>源文件\Solver\SWESourceTerm2d\SWETopographySourceTerm2d</Filter>
+    </ClCompile>
+    <ClCompile Include="CoriolisTermSolver.cpp">
+      <Filter>源文件\Solver\SWESourceTerm2d\CoriolisTermSolver</Filter>
+    </ClCompile>
+    <ClCompile Include="FrictionTermSolver.cpp">
+      <Filter>源文件\Solver\SWESourceTerm2d\FrictionTermSolver</Filter>
+    </ClCompile>
+    <ClCompile Include="WindTermSolver.cpp">
+      <Filter>源文件\Solver\SWESourceTerm2d\WindTermSolver</Filter>
+    </ClCompile>
+    <ClCompile Include="NdghydrostaticSolver2d.cpp">
+      <Filter>源文件\Solver\SWESourceTerm2d\NdghydrostaticSolver2d</Filter>
+    </ClCompile>
+    <ClCompile Include="c_GetMeshIntegralValue.c">
+      <Filter>源文件\MeshUnion\private</Filter>
+    </ClCompile>
+    <ClCompile Include="c_EvaluatePostFunc2d.c">
+      <Filter>源文件\SWEConventional2d\private</Filter>
+    </ClCompile>
+    <ClCompile Include="c_UpdateTimeInterval2d.c">
+      <Filter>源文件\SWEAbstract2d\private</Filter>
+    </ClCompile>
+    <ClCompile Include="AbstractOutputFile.cpp">
+      <Filter>源文件\AbstractOutputFile</Filter>
+    </ClCompile>
+    <ClCompile Include="SWEElevationLimiter2d.cpp">
+      <Filter>源文件\Solver\SWEElevationLimiter2d</Filter>
+    </ClCompile>
+    <ClCompile Include="c_EvaluateVertAverage.c">
+      <Filter>源文件\Solver\SWEElevationLimiter2d\private</Filter>
+    </ClCompile>
+    <ClCompile Include="c_VertLimit2d.c">
+      <Filter>源文件\Solver\SWEElevationLimiter2d\private</Filter>
+    </ClCompile>
+    <ClCompile Include="c_UpdateWDWetDryState.c">
+      <Filter>源文件\SWEConventional2d\private</Filter>
+    </ClCompile>
+    <ClCompile Include="NdgWaveCurrentVisSolver2d.cpp">
+      <Filter>源文件\Solver\NdgWaveCurrentVisSolver2d</Filter>
+    </ClCompile>
+    <ClCompile Include="RollerWaveRadiationSolver.cpp">
+      <Filter>源文件\Solver\SWESourceTerm2d\RollerWaveRadiationSolver</Filter>
+    </ClCompile>
+    <ClCompile Include="NdgSWEHorizSmagrinskyDiffSolver.cpp">
+      <Filter>源文件\Solver\NdgSWEHorizSmagrinskyDiffSolver</Filter>
+    </ClCompile>
+    <ClCompile Include="AbstractDiffSolver.cpp">
+      <Filter>源文件\Solver\NdgSWEHorizSmagrinskyDiffSolver\NdgSWEHorizDiffSolver\AbstractDiffSolver</Filter>
+    </ClCompile>
+    <ClCompile Include="c_EvaluateSurfValue.c">
+      <Filter>源文件\Solver\NdgSWEHorizSmagrinskyDiffSolver\NdgSWEHorizDiffSolver\AbstractDiffSolver\private</Filter>
+    </ClCompile>
+    <ClCompile Include="NdgHorizDiffSolver.cpp">
+      <Filter>源文件\Solver\NdgSWEHorizSmagrinskyDiffSolver\NdgSWEHorizDiffSolver</Filter>
+    </ClCompile>
+    <ClCompile Include="GetMatrixInverse.cpp">
+      <Filter>源文件\MeshUnion\Basic</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MeshUnion.h">
+      <Filter>头文件\MeshUnion</Filter>
+    </ClInclude>
+    <ClInclude Include="InnerEdge.h">
+      <Filter>头文件\MeshUnion\InnerEdge</Filter>
+    </ClInclude>
+    <ClInclude Include="Icell.h">
+      <Filter>头文件\MeshUnion\InnerEdge</Filter>
+    </ClInclude>
+    <ClInclude Include="BoundaryEdge.h">
+      <Filter>头文件\MeshUnion\BoundaryEdge</Filter>
+    </ClInclude>
+    <ClInclude Include="Bcell.h">
+      <Filter>头文件\MeshUnion\BoundaryEdge</Filter>
+    </ClInclude>
+    <ClInclude Include="Cell.h">
+      <Filter>头文件\MeshUnion\Cell</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshUnion_dim.h">
+      <Filter>头文件\MeshUnion\Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="new_delete.h">
+      <Filter>头文件\MeshUnion\Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="SWEFaceFluxSolver2d.h">
+      <Filter>头文件\Solver\SWEFaceFluxSolver2d</Filter>
+    </ClInclude>
+    <ClInclude Include="NdgPhysMat.h">
+      <Filter>头文件\NdgPhysMat</Filter>
+    </ClInclude>
+    <ClInclude Include="NdgQuadFreeStrongFormAdvSolver2d.h">
+      <Filter>头文件\NdgQuadFreeStrongFormAdvSolver2d</Filter>
+    </ClInclude>
+    <ClInclude Include="SWE2d.h">
+      <Filter>头文件\SWEAbstract2d</Filter>
+    </ClInclude>
+    <ClInclude Include="SWEAbstract2d.h">
+      <Filter>头文件\SWEAbstract2d</Filter>
+    </ClInclude>
+    <ClInclude Include="SWEHLLNumFluxSolver2d.h">
+      <Filter>头文件\Solver\SWEHLLNumFluxSolver2d</Filter>
+    </ClInclude>
+    <ClInclude Include="SWENumFlux2d.h">
+      <Filter>头文件\Solver\SWEHLLNumFluxSolver2d</Filter>
+    </ClInclude>
+    <ClInclude Include="SWEPrebalanceVolumeFlux2d.h">
+      <Filter>头文件\Solver\SWEPrebalanceVolumeFlux2d</Filter>
+    </ClInclude>
+    <ClInclude Include="SWEConventional2d.h">
+      <Filter>头文件\SWEConventional2d</Filter>
+    </ClInclude>
+    <ClInclude Include="SWEPreBlanaced2d.h">
+      <Filter>头文件\SWEPreBlanaced2d</Filter>
+    </ClInclude>
+    <ClInclude Include="SWETopographySourceTerm2d.h">
+      <Filter>头文件\Solver\SWESourceTerm2d\SWETopographySourceTerm2d</Filter>
+    </ClInclude>
+    <ClInclude Include="CoriolisTermSolver.h">
+      <Filter>头文件\Solver\SWESourceTerm2d\CoriolisTermSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="FrictionTermSolver.h">
+      <Filter>头文件\Solver\SWESourceTerm2d\FrictionTermSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="WindTermSolver.h">
+      <Filter>头文件\Solver\SWESourceTerm2d\WindTermSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="NdghydrostaticSolver2d.h">
+      <Filter>头文件\Solver\SWESourceTerm2d\NdghydrostaticSolver2d</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractOutputFile.h">
+      <Filter>头文件\AbstractOutputFile</Filter>
+    </ClInclude>
+    <ClInclude Include="SWEElevationLimiter2d.h">
+      <Filter>头文件\Solver\SWEElevationLimiter2d</Filter>
+    </ClInclude>
+    <ClInclude Include="NdgWaveCurrentVisSolver2d.h">
+      <Filter>头文件\Solver\NdgWaveCurrentVisSolver2d</Filter>
+    </ClInclude>
+    <ClInclude Include="SWE2d0.h">
+      <Filter>头文件\SWEAbstract2d</Filter>
+    </ClInclude>
+    <ClInclude Include="RollerWaveRadiationSolver.h">
+      <Filter>头文件\Solver\SWESourceTerm2d\RollerWaveRadiationSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="NdgSWEHorizSmagrinskyDiffSolver.h">
+      <Filter>头文件\Solver\NdgSWEHorizSmagrinskyDiffSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractDiffSolver.h">
+      <Filter>头文件\Solver\NdgSWEHorizSmagrinskyDiffSolver\NdgSWEHorizDiffSolver\AbstractDiffSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="NdgHorizDiffSolver.h">
+      <Filter>头文件\Solver\NdgSWEHorizSmagrinskyDiffSolver\NdgSWEHorizDiffSolver</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
