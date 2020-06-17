@@ -10,7 +10,7 @@ startTime(0),
 finalTime(259200),
 outputIntervalNum(500),
 tidalinterval(600)/*潮流数据间隔*/,
-abstractoutputfile("..//..//20191208.nc", 259200.0 / 500.0, 500),
+abstractoutputfile("20191208jiakuosan.nc", 259200.0 / 500.0, 500),
 ndgswehorizsmagrinskydiffsolver(0.25)
 {
 	Np = meshunion->cell_p->Np;
@@ -18,11 +18,11 @@ ndgswehorizsmagrinskydiffsolver(0.25)
 	boundarydge_Nfp = meshunion->boundarydge_p->Nfp;
 	boundarydge_Ne = meshunion->boundarydge_p->Ne;
 	//Nfield = meshunion->Nfield;
-	//Nvar = 3;
-	requestmemory(&InnerEdgefm2d, meshunion->inneredge_p->Nfp, meshunion->inneredge_p->Ne, 3);
-	requestmemory(&InnerEdgefp2d, meshunion->inneredge_p->Nfp, meshunion->inneredge_p->Ne, 3);
-	requestmemory(&BoundaryEdgefm2d, meshunion->boundarydge_p->Nfp, meshunion->boundarydge_p->Ne, 3);
-	requestmemory(&BoundaryEdgefp2d, meshunion->boundarydge_p->Nfp, meshunion->boundarydge_p->Ne, 3);
+	int Nvar = 3;
+	requestmemory(&InnerEdgefm2d, meshunion->inneredge_p->Nfp, meshunion->inneredge_p->Ne, Nvar);
+	requestmemory(&InnerEdgefp2d, meshunion->inneredge_p->Nfp, meshunion->inneredge_p->Ne, Nvar);
+	requestmemory(&BoundaryEdgefm2d, meshunion->boundarydge_p->Nfp, meshunion->boundarydge_p->Ne, Nvar);
+	requestmemory(&BoundaryEdgefp2d, meshunion->boundarydge_p->Nfp, meshunion->boundarydge_p->Ne, Nvar);
 
 	requestmemory(&fphys, Np, K, Nfield);
 	requestmemory(&fext, boundarydge_Nfp, boundarydge_Ne, Nfield);
@@ -146,9 +146,9 @@ void NdgPhysMat::matEvaluateSSPRK22()
 
 	while (time < ftime)
 	{
-		double dt = UpdateTimeInterval(fphys)*0.4;
+		double dt = UpdateTimeInterval(fphys)*0.1;
 
-		//cout << dt << endl;
+		cout << dt << endl;
 
 		if (time + dt > ftime) {
 			dt = ftime - time;

@@ -22,26 +22,8 @@ void NdgSWEHorizSmagrinskyDiffSolver::EvaluateDiffRHS(double *fphys, double *frh
 	double *frhs_2 = frhs + num;
 	double *frhs_3 = frhs + 2 * num;
 
-	double *px_1 = px;
-	double *px_2 = px + num;
-	double *py_1 = py;
-	double *py_2 = py + num;
-
 	UpdateViscosity(fphys_2, fphys_3, fphys_1);
 	UpdatePenaltyParameter(fphys_1);
-
-	//double *InnerEdgefm2d_2 = InnerEdgefm2d + num_inner;
-//double *InnerEdgefm2d_3 = InnerEdgefm2d + 2 * num_inner;
-//double *InnerEdgefp2d_2 = InnerEdgefp2d + num_inner;
-//double *InnerEdgefp2d_2 = InnerEdgefp2d + num_inner;
-
-//double *BoundaryEdgefm2d_2 = BoundaryEdgefm2d + num_bound;
-//double *BoundaryEdgefm2d_3 = BoundaryEdgefm2d + 2 * num_bound;
-//double *BoundaryEdgefp2d_2 = BoundaryEdgefp2d + num_bound;
-//double *BoundaryEdgefp2d_3 = BoundaryEdgefp2d + 2 * num_bound;
-
-
-
 
 	double *uv;
 	requestmemory(&uv, Np, K);
@@ -71,7 +53,7 @@ void NdgSWEHorizSmagrinskyDiffSolver::EvaluateDiffRHS(double *fphys, double *frh
 	requestmemory(&BoundaryEdgefm2d31, meshunion->boundarydge_p->Nfp, meshunion->boundarydge_p->Ne);
 	requestmemory(&BoundaryEdgefp2d31, meshunion->boundarydge_p->Nfp, meshunion->boundarydge_p->Ne);
 
-	for (size_t i = 1; i < 3; i++)
+	for (int i = 1; i < 3; i++)
 	{
 		double *InnerEdgefm2d_n = InnerEdgefm2d + i * num_inner;
 		double *InnerEdgefp2d_n = InnerEdgefp2d + i * num_inner;
@@ -93,25 +75,27 @@ void NdgSWEHorizSmagrinskyDiffSolver::EvaluateDiffRHS(double *fphys, double *frh
 		{
 		case 1:
 
-			cblas_dcopy(num_inner, uv, 1, u, 1);
+			cblas_dcopy(num, uv, 1, u, 1);
 			cblas_dcopy(num_inner, InnerEdgefm2d_temp, 1, InnerEdgefm2d21, 1);
 			cblas_dcopy(num_inner, InnerEdgefp2d_temp, 1, InnerEdgefp2d21, 1);
-			cblas_dcopy(num_inner, BoundaryEdgefm2d_temp, 1, BoundaryEdgefm2d21, 1);
-			cblas_dcopy(num_inner, BoundaryEdgefp2d_temp, 1, BoundaryEdgefp2d21, 1);
-
+			cblas_dcopy(num_bound, BoundaryEdgefm2d_temp, 1, BoundaryEdgefm2d21, 1);
+			cblas_dcopy(num_bound, BoundaryEdgefp2d_temp, 1, BoundaryEdgefp2d21, 1);
 			break;
 		case 2:
-			cblas_dcopy(num_inner, uv, 1, v, 1);
+			cblas_dcopy(num, uv, 1, v, 1);
 			cblas_dcopy(num_inner, InnerEdgefm2d_temp, 1, InnerEdgefm2d31, 1);
 			cblas_dcopy(num_inner, InnerEdgefp2d_temp, 1, InnerEdgefp2d31, 1);
-			cblas_dcopy(num_inner, BoundaryEdgefm2d_temp, 1, BoundaryEdgefm2d31, 1);
-			cblas_dcopy(num_inner, BoundaryEdgefp2d_temp, 1, BoundaryEdgefp2d31, 1);
-
+			cblas_dcopy(num_bound, BoundaryEdgefm2d_temp, 1, BoundaryEdgefm2d31, 1);
+			cblas_dcopy(num_bound, BoundaryEdgefp2d_temp, 1, BoundaryEdgefp2d31, 1);
 			break;
-
 		}
 
 	}
+
+	double *px_1 = px;
+	double *px_2 = px + num;
+	double *py_1 = py;
+	double *py_2 = py + num;
 
 	double *frhs_temp1, *frhs_temp2, *frhs_temp3;
 	requestmemory(&frhs_temp1, Np, K);
@@ -195,10 +179,8 @@ void NdgSWEHorizSmagrinskyDiffSolver::UpdateViscosity(double *hu, double *hv, do
 
 	cblas_dcopy(num, hu, 1, hu_, 1);
 	cblas_dcopy(num, hv, 1, hv_, 1);
-
 	dotdiv(num, hu_, h, hu_);
 	dotdiv(num, hv_, h, hv_);
-
 
 	Evaluate_rdhuv(rx, Dr, hu_, rx_dr_hu);
 	Evaluate_rdhuv(sx, Ds, hu_, sx_ds_hu);
@@ -219,9 +201,9 @@ void NdgSWEHorizSmagrinskyDiffSolver::UpdateViscosity(double *hu, double *hv, do
 	dotplus(num, ry_dr_hv, sy_ds_hv, ry_dr_hv);
 
 
-	for (size_t i = 0; i < K; i++)
+	for (int i = 0; i < K; i++)
 	{
-		for (size_t j = 0; j < Np; j++)
+		for (int j = 0; j < Np; j++)
 		{
 			nv[i*Np + j] = C * LAV[i] * (sqrt(pow(rx_dr_hu[i*Np + j], 2) + 0.5* pow(ry_dr_hu[i*Np + j], 2) + pow(ry_dr_hv[i*Np + j], 2)));
 		}

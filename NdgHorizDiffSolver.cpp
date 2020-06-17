@@ -3,9 +3,9 @@
 
 NdgHorizDiffSolver::NdgHorizDiffSolver() {
 
-	requestmemory(&InnerEdgeTau, meshunion->cell_p->Nfp, meshunion->inneredge_p->Ne);
-	requestmemory(&BoundaryEdgeTau, meshunion->cell_p->Nfp, meshunion->boundarydge_p->Ne);
-	requestmemory(&Kappa, meshunion->K, meshunion->cell_p->Np);
+	requestmemory(&InnerEdgeTau, meshunion->inneredge_p->Nfp, meshunion->inneredge_p->Ne);
+	requestmemory(&BoundaryEdgeTau, meshunion->boundarydge_p->Nfp, meshunion->boundarydge_p->Ne);
+	requestmemory(&Kappa, meshunion->cell_p->Np, meshunion->K);
 	requestmemory(&px, meshunion->cell_p->Np, meshunion->K, 2);
 	requestmemory(&py, meshunion->cell_p->Np, meshunion->K, 2);
 
@@ -68,14 +68,14 @@ void NdgHorizDiffSolver::assembleMassMatrix()
 void NdgHorizDiffSolver::UpdatePenaltyParameter(/*double *HnvM, double *HnVP,*/ double *Height)
 {
 	// this penalty parameter is calculated as $\tau = \frac{ (D_p + 1)(D_p + d) }{d}\frac{ n_0 }{2}\frac{ A }{V}\miu$
-	int Nfp = *(meshunion->inneredge_p->Nfp);
-	int Ne = *(meshunion->inneredge_p->Ne);
 	int Np = *(meshunion->cell_p->Np);
 	int K = *(meshunion->K);
+	int Nfp_inner = *(meshunion->inneredge_p->Nfp);
+	int Ne_inner = *(meshunion->inneredge_p->Ne);
 	int num = Np * K;
 
 	double type = *(meshunion->type);
-	double N = (double)*(meshunion->cell_p->N);
+	int N = *(meshunion->cell_p->N);
 	double Nface = *(meshunion->cell_p->Nface);
 
 	double *FToE = meshunion->inneredge_p->FToE;
@@ -83,8 +83,8 @@ void NdgHorizDiffSolver::UpdatePenaltyParameter(/*double *HnvM, double *HnVP,*/ 
 	double *FToN2 = meshunion->inneredge_p->FToN2;
 
 	double *HnvM, *HnvP;
-	requestmemory(&HnvM, Nfp, Ne);
-	requestmemory(&HnvP, Nfp, Ne);
+	requestmemory(&HnvM, Nfp_inner, Ne_inner);
+	requestmemory(&HnvP, Nfp_inner, Ne_inner);
 
 	//double *Heigh_temp;
 	//requestmemory(&Heigh_temp, Np, K);
@@ -95,64 +95,64 @@ void NdgHorizDiffSolver::UpdatePenaltyParameter(/*double *HnvM, double *HnVP,*/ 
 	cblas_dcopy(num, Height, 1, Kappa, 1);
 	dotmul(num, nv, Kappa, Kappa);
 
-	EvaluateSurfValue(HnvM, HnvP, FToE, FToN1, FToN2, Kappa, Nfp, Ne, Np, K);
+	EvaluateSurfValue(HnvM, HnvP, FToE, FToN1, FToN2, Kappa, Nfp_inner, Ne_inner, Np, K);
 
 	double *InnerEdgeA_fm, *InnerEdgeA_fp;
-	requestmemory(&InnerEdgeA_fm, Ne);
-	requestmemory(&InnerEdgeA_fp, Ne);
+	requestmemory(&InnerEdgeA_fm, Ne_inner);
+	requestmemory(&InnerEdgeA_fp, Ne_inner);
 
 	double *inner_LAV = meshunion->inneredge_p->LAV;
 	double *LAV = meshunion->LAV;
-	for (size_t i = 0; i < Ne; i++)
+	for (size_t i = 0; i < Ne_inner; i++)
 	{
 		InnerEdgeA_fm[i] = inner_LAV[i] / LAV[(int)FToE[2 * i]];
 		InnerEdgeA_fp[i] = inner_LAV[i] / LAV[(int)FToE[2 * i + 1]];
 	}
 
 	double *InnerEdgeTau_fm, *InnerEdgeTau_fp;
-	requestmemory(&InnerEdgeTau_fm, Nfp, Ne);
-	requestmemory(&InnerEdgeTau_fp, Nfp, Ne);
+	requestmemory(&InnerEdgeTau_fm, Nfp_inner, Ne_inner);
+	requestmemory(&InnerEdgeTau_fp, Nfp_inner, Ne_inner);
 
 
-	const double k = (N + 1)*(N + type) / type * Nface / 2;
+	const double k = ((double)N + 1)*((double)N + type) / type * Nface / 2;
 
-	for (size_t i = 0; i < Ne; i++)
+	for (size_t i = 0; i < Ne_inner; i++)
 	{
-		for (size_t j = 0; j < Nfp; j++)
+		for (size_t j = 0; j < Nfp_inner; j++)
 		{
-			InnerEdgeTau_fm[i*Nfp + j] = InnerEdgeA_fm[i] * k* HnvM[i*Nfp + j];
-			InnerEdgeTau_fp[i*Nfp + j] = InnerEdgeA_fp[i] * k* HnvP[i*Nfp + j];
-			InnerEdgeTau[i*Nfp + j] = MAX(InnerEdgeTau_fm[i*Nfp + j], InnerEdgeTau_fp[i*Nfp + j]);
+			InnerEdgeTau_fm[i*Nfp_inner + j] = InnerEdgeA_fm[i] * k* HnvM[i*Nfp_inner + j];
+			InnerEdgeTau_fp[i*Nfp_inner + j] = InnerEdgeA_fp[i] * k* HnvP[i*Nfp_inner + j];
+			InnerEdgeTau[i*Nfp_inner + j] = MAX(InnerEdgeTau_fm[i*Nfp_inner + j], InnerEdgeTau_fp[i*Nfp_inner + j]);
 		}
 	}
 
 	FToE = meshunion->boundarydge_p->FToE;
 	FToN1 = meshunion->boundarydge_p->FToN1;
 	FToN2 = meshunion->boundarydge_p->FToN2;
-	Ne = *(meshunion->boundarydge_p->Ne);
-	Nfp = *(meshunion->boundarydge_p->Nfp);
+	int Ne_bound = *(meshunion->boundarydge_p->Ne);
+	int Nfp_bound = *(meshunion->boundarydge_p->Nfp);
 
 	double *bound_LAV = meshunion->boundarydge_p->LAV;
 
 	double *BoundaryEdgeA_fm;
-	requestmemory(&BoundaryEdgeA_fm, Ne);
+	requestmemory(&BoundaryEdgeA_fm, Ne_bound);
 
-	for (size_t i = 0; i < Ne; i++)
+	for (size_t i = 0; i < Ne_bound; i++)
 	{
 		BoundaryEdgeA_fm[i] = bound_LAV[i] / LAV[(int)FToE[2 * i]];
 
 	}
 
 	double *Hnv, *Hnu;
-	requestmemory(&Hnv, Nfp, Ne);
-	requestmemory(&Hnu, Nfp, Ne);
+	requestmemory(&Hnv, Nfp_bound, Ne_bound);
+	requestmemory(&Hnu, Nfp_bound, Ne_bound);
 
-	EvaluateSurfValue(Hnv, Hnu, FToE, FToN1, FToN2, Kappa, Nfp, Ne, Np, K);
+	EvaluateSurfValue(Hnv, Hnu, FToE, FToN1, FToN2, Kappa, Nfp_bound, Ne_bound, Np, K);
 
-	for (size_t i = 0; i < Ne; i++)
+	for (size_t i = 0; i < Ne_bound; i++)
 	{
-		for (size_t j = 0; j < Nfp; j++) {
-			BoundaryEdgeTau[i*Nfp + j] = BoundaryEdgeA_fm[i] * k*Hnv[i*Nfp + j];
+		for (size_t j = 0; j < Nfp_bound; j++) {
+			BoundaryEdgeTau[i*Nfp_bound + j] = BoundaryEdgeA_fm[i] * k*Hnv[i*Nfp_bound + j];
 		}
 	}
 
@@ -189,8 +189,8 @@ void NdgHorizDiffSolver::CalculateAuxialaryVariable(double *fphys, double *Kappa
 	double *sy = meshunion->sy;
 
 
-	double *px_n = px + (VarIndex - 1)*Np*K;
-	double *py_n = py + (VarIndex - 1)*Np*K;
+	double *px_n = px + (VarIndex - 1)*num;
+	double *py_n = py + (VarIndex - 1)*num;
 
 	evaluate_pxy(rx, sx, fphys, px_n);
 	evaluate_pxy(ry, sy, fphys, py_n);
@@ -239,49 +239,48 @@ void NdgHorizDiffSolver::evaluate_pxy(double *r, double *s, double *fphys, doubl
 	int Np = *(meshunion->cell_p->Np);
 	double *Dr = meshunion->cell_p->Dr;
 	double *Ds = meshunion->cell_p->Ds;
-	double *invM_n;
-	double *Kappa_n;
-	double *M_n;
-	double *r_n;
-	double *s_n;
-	double *p;
-	double *fphys_n;
-	double *temp1, *temp2, *temp3;
+
+	double *temp1, *temp2, *temp3, *temp4;
 	requestmemory(&temp1, Np, Np);
-	requestmemory(&temp2, Np);
+	requestmemory(&temp2, Np, Np);
 	requestmemory(&temp3, Np);
+	requestmemory(&temp4, Np);
 
 
 	for (size_t i = 0; i < K; i++)
 	{
-		p = pxy + i * Np;
-		invM_n = invM + i * Np*Np;
-		Kappa_n = Kappa + i * Np;
-		M_n = M + i * Np*Np;
-		r_n = r + i * Np;
-		s_n = s + i * Np;
-		fphys_n = fphys + i * Np;
-
-		multiply(Dr, fphys_n, temp2, Np, 1, Np);
-		multiply(Ds, fphys_n, temp3, Np, 1, Np);
+		double *p_n = pxy + i * Np;
+		double *invM_n = invM + i * Np*Np;
+		double *Kappa_n = Kappa + i * Np;
+		double *M_n = M + i * Np*Np;
+		double *r_n = r + i * Np;
+		double *s_n = s + i * Np;
+		double *fphys_n = fphys + i * Np;
 
 		for (size_t j = 0; j < Np; j++)
 		{
 			for (size_t k = 0; k < Np; k++)
 			{
-				temp1[j*Np + k] = invM_n[j*Np + k] * Kappa_n[j] * M_n[j*Np + k];
+				temp1[j*Np + k] = invM_n[j*Np + k] * Kappa_n[j];
 			}
-			temp2[j] = r_n[j] * temp2[j] + s_n[j] * temp3[j];
 		}
 
-		multiply(temp1, temp2, p, Np, 1, Np);
+		multiply(temp1, M_n, temp2, Np, Np, Np);
+		multiply(Dr, fphys_n, temp3, Np, 1, Np);
+		multiply(Ds, fphys_n, temp4, Np, 1, Np);
 
+		for (size_t h = 0; h < Np; h++)
+		{
+			temp3[h] = r_n[h] * temp3[h] + s_n[h] * temp4[h];
+		}
+
+		multiply(temp2, temp3, p_n, Np, 1, Np);
 	}
 
 	freememory(&temp1);
 	freememory(&temp2);
 	freememory(&temp3);
-
+	freememory(&temp4);
 };
 
 
@@ -305,12 +304,12 @@ void NdgHorizDiffSolver::evaluate_inner_pxy(double *n, double *KappaM, double *K
 	dotmul(num_inner, KappaP, fp, KappaP_inner_nx);
 	dotplus(num_inner, KappaM_inner_nx, KappaP_inner_nx, KappaMP_inner_nx);
 
-	double *nx_inner = n;
+	//double *nx_inner = n;
 	//double *ny_inner = meshunion->inneredge_p->ny;
 
-	dotmul(num_inner, KappaM_inner_nx, nx_inner, KappaM_inner_nx);
-	dotmul(num_inner, KappaP_inner_nx, nx_inner, KappaP_inner_nx);
-	dotmul(num_inner, KappaMP_inner_nx, nx_inner, KappaMP_inner_nx);
+	dotmul(num_inner, KappaM_inner_nx, n, KappaM_inner_nx);
+	dotmul(num_inner, KappaP_inner_nx, n, KappaP_inner_nx);
+	dotmul(num_inner, KappaMP_inner_nx, n, KappaMP_inner_nx);
 	cblas_dscal(num_inner, 0.5, KappaMP_inner_nx, 1);
 
 	mesh.inneredge.EvaluateStrongFromEdgeRHS(KappaM_inner_nx, KappaP_inner_nx, KappaMP_inner_nx, frhs_temp, meshunion->cell_p->invM, meshunion->J, meshunion->cell_p->Np, meshunion->K, 1);
@@ -351,10 +350,10 @@ void NdgHorizDiffSolver::evaluate_bound_pxy(double *n, double *KappaM, double *f
 	dotmul(num_bound, KappaM, fp, KappaM_fp);
 	dotplus(num_bound, KappaM_fm, KappaM_fp, KappaM_fmp);
 
-	double *nx_bound = n;
+	/*double *nx_bound = n;*/
 
-	dotmul(num_bound, KappaM_fm, nx_bound, KappaM_fm);
-	dotmul(num_bound, KappaM_fmp, nx_bound, KappaM_fmp);
+	dotmul(num_bound, KappaM_fm, n, KappaM_fm);
+	dotmul(num_bound, KappaM_fmp, n, KappaM_fmp);
 
 	cblas_dscal(num_bound, 0.5, KappaM_fmp, 1);
 

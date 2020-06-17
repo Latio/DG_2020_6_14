@@ -20,9 +20,7 @@ public:
 	~AbstractDiffSolver();
 
 	void EvaluateSurfValue(double *fm_, double  *fp_, double *FToE_, double *FToN1_, double *FToN2_, double *Kappa_, int Nfp_, int Ne_, int Np_, int K_);
-
 	void Evaluate_rdhuv(double *rs, double *d, double *rdhuv, double *temp);
-
 
 	double *nv;
 };

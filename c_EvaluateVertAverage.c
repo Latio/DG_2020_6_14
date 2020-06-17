@@ -6,8 +6,8 @@
 #include <omp.h>
 #endif
 
-#define max(a, b) ((a > b) ? a : b)
-#define min(a, b) ((a < b) ? a : b)
+//#define max(a, b) ((a > b) ? a : b)
+//#define min(a, b) ((a < b) ? a : b)
 
 void c_EvaluateVertAverage(double *cvar_, int *Nv_, double *Nvc_, double *VToM_, double *VToK_, double *VToW_, double *fvert_, double *fvmin_, double *fvmax_, int Nvcmax_)
 {
