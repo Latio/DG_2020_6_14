@@ -1,5 +1,6 @@
 #include "NdgHorizDiffSolver.h"
 #define MAX(a,b)  (((a)>(b))?(a):(b))
+//#include"stdlib.h"
 
 NdgHorizDiffSolver::NdgHorizDiffSolver() {
 
@@ -39,29 +40,81 @@ void NdgHorizDiffSolver::assembleMassMatrix()
 	double *Jq, *temp;
 	requestmemory(&Jq, Nq);
 	requestmemory(&temp, Np, Nq);
+	//requestmemory(&vq_zhuanzhi, Nq, Nq);
+
+	//for (size_t i = 0; i < Nq; i++)
+	//{
+	//	for (size_t j = 0; j < Np, j++)
+	//	{
+	//		vq_zhuanzhi[j + i * Nq]
+	//	}
+	//}
+
 
 	for (size_t i = 0; i < K; i++)
 	{
 		double *M_n = M + i * Np*Np;
 		double *invM_n = invM + i * Np*Np;
 		double *J_n = J + i * Np;
+
 		multiply(Vq, J_n, Jq, Nq, 1, Np);
+
+		//  Jq = cell.project_node2quad(mesh.J(:, k));
+		//  obj.M(:, : , k) = (cell.Vq' * diag( Jq.*cell.wq ) ) * cell.Vq;
+		//	obj.invM(:, : , k) = inv(obj.M(:, : , k));
+
 
 		for (size_t j = 0; j < Nq; j++)
 		{
 			for (size_t k = 0; k < Np; k++)
 			{
-				temp[j*Nq + k] = Vq[j + k * Nq] * Jq[j] * wq[j];
+				temp[k*Nq + j] = Vq[j + k * Nq] * Jq[j] * wq[j];
 			}
 		}
 
-		multiply(temp, Vq, M_n, Np, Np, Nq);
+		//multiply(temp, Vq, M_n, Np, Np, Nq);
+
+		const enum CBLAS_ORDER Order = CblasColMajor;
+		const enum CBLAS_TRANSPOSE TransA = CblasTrans;
+		//const enum CBLAS_TRANSPOSE TransA = CblasNoTrans;
+		const enum CBLAS_TRANSPOSE TransB = CblasNoTrans;
+		const int M = Np;//A的行数，C的行数
+		const int N = Np;//B的列数，C的列数
+		const int L = Nq;//A的列数，B的行数
+		const double alpha = 1.0;
+		const double beta = 0.0;
+		const int lda = L;//A的行        
+		const int ldb = L;//B的行
+		const int ldc = M;//C的行   //如果列优先，分别写ABC的行
+
+		cblas_dgemm(Order, TransA, TransB, M, N, L, alpha, temp, lda, Vq, ldb, beta, M_n, ldc);
+
+		//for (size_t i = 0; i < 36; i++)
+		//{
+		//	std::cout << "temp[" << i << "]:  " << temp[i] << std::endl;
+		//}
+
+		//std::cout << "vq	" << std::endl;
+
+		//for (size_t i = 0; i <36; i++)
+		//{
+		//	std::cout << "vq[" << i << "]:  " << Vq[i] << std::endl;
+		//}
+
+
+
 
 		GetMatrixInverse(Np, M_n, invM_n);//计算逆矩阵
+
+		//for (size_t i = 0; i < Np*Np; i++)
+		//{
+		//	std::cout << "M_n[" << i << "]:  " << M_n[i] << std::endl;
+		//}
 	}
 
 	freememory(&Jq);
 	freememory(&temp);
+	//freememory(&vq_zhuanzhi);
 };
 
 
@@ -105,8 +158,8 @@ void NdgHorizDiffSolver::UpdatePenaltyParameter(/*double *HnvM, double *HnVP,*/ 
 	double *LAV = meshunion->LAV;
 	for (size_t i = 0; i < Ne_inner; i++)
 	{
-		InnerEdgeA_fm[i] = inner_LAV[i] / LAV[(int)FToE[2 * i]];
-		InnerEdgeA_fp[i] = inner_LAV[i] / LAV[(int)FToE[2 * i + 1]];
+		InnerEdgeA_fm[i] = inner_LAV[i] / LAV[(int)FToE[2 * i]-1];
+		InnerEdgeA_fp[i] = inner_LAV[i] / LAV[(int)FToE[2 * i + 1]-1];
 	}
 
 	double *InnerEdgeTau_fm, *InnerEdgeTau_fp;

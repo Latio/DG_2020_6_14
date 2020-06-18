@@ -146,7 +146,7 @@ void NdgPhysMat::matEvaluateSSPRK22()
 
 	while (time < ftime)
 	{
-		double dt = UpdateTimeInterval(fphys)*0.1;
+		double dt = UpdateTimeInterval(fphys)*0.4;
 
 		cout << dt << endl;
 

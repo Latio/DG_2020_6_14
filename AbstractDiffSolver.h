@@ -11,8 +11,6 @@ extern "C" {
 
 }
 
-
-
 class AbstractDiffSolver
 {
 public:

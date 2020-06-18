@@ -1,7 +1,7 @@
 #include "NdgSWEHorizSmagrinskyDiffSolver.h"
 
 NdgSWEHorizSmagrinskyDiffSolver::NdgSWEHorizSmagrinskyDiffSolver(double c_) :C(c_)
-{
+{ 
 }
 
 NdgSWEHorizSmagrinskyDiffSolver::~NdgSWEHorizSmagrinskyDiffSolver()

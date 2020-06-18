@@ -123,7 +123,7 @@ void   outprint(s_matrix  &   _mat, double *result)  //  Êä³öº¯Êı
 
 }
 
-int  GetMatrixInverse(int np, double *array, double *result)
+void  GetMatrixInverse(int np, double *array, double *result)
 {
 
 	nSize = np;
@@ -167,7 +167,7 @@ int  GetMatrixInverse(int np, double *array, double *result)
 
 
 
-	return  0;
+	//return  0;
 }
 
 //int main() {

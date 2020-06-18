@@ -23,7 +23,7 @@ void freememory(int **meshpoint);
 
 void freememory(signed char **meshpoint);
 void freememory(bool **meshpoint);
-int  GetMatrixInverse(int np, double *array, double *result);
+void  GetMatrixInverse(int np, double *array, double *result);
 
 void multiply(double *const matrix1, double *const matrix2, double *result, int M_, int N_, int L_);
 void dotmul(int num, double *const matrix1, double *matrix2, double *result);
