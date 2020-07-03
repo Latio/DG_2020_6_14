@@ -9,6 +9,8 @@
 //#include<algorithm>
 #include<time.h>
 
+using namespace std;
+
 extern "C" {
 
 }
@@ -51,15 +53,19 @@ protected:
 	//double *viscositySolver;
 	//double *NonhydrostaticSolver;
 	//double ftime;
-	std::string casename;
+	string casename;
 
 	double *frhs;
 	double *fext;
 	//double *fphys0;
 	double *fphys;
 	double *zGrad;
-	std::vector<double> tidal;
-	std::vector<int> obeindex;
+	vector<double> tidal;
+	vector<int> obeindex;
+
+	vector<int> DG_Swan_Node;
+	vector<int> Swan_DG_Node;
+	vector<int> sizeof_PerNode;
 
 	double tidalinterval;
 

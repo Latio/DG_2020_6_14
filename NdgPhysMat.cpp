@@ -104,7 +104,68 @@ ndgswehorizsmagrinskydiffsolver(0.25)
 
 	data.close();
 
+	ifstream fort14("D:/Desktop/fort.14");
 
+	double d;
+	int d1;
+	int size;
+
+	fort14 >> d;
+	int fort_Ne = (int)d;
+	fort14 >> d;
+	int fort_Nv = (int)d;
+
+	for (size_t i = 0; i < fort_Nv * 4; i++)
+	{
+		fort14 >> d;
+	}
+
+	for (size_t i = 0; i < fort_Ne; i++)
+	{
+		for (size_t j = 0; j < 2; j++)
+		{
+			fort14 >> d1;
+		}
+		for (size_t k = 0; k < 3; k++)
+		{
+			//while (data >> d)
+			fort14 >> d1;
+			d1--;
+			DG_Swan_Node.push_back(d1);//将数据压入堆栈。//
+
+		}
+
+	}
+	fort14.close();
+
+	cout << fort_Ne << endl << fort_Nv << endl;
+	//int i = 0;
+
+	for (size_t i = 0; i < fort_Nv; i++)
+	{
+		size = 0;
+		for (int j = 0; j < fort_Ne * 3; j++)
+		{
+			if (DG_Swan_Node[j] == i) {
+				Swan_DG_Node.push_back(j);
+				size++;
+			}
+		}
+		//cout << "size of size: " << size << endl;
+		sizeof_PerNode.push_back(size);
+	}
+
+	vector<int>::iterator it;
+	int sum = 0;
+	int i = 0;
+	for (it = sizeof_PerNode.begin(); it != sizeof_PerNode.end(); it++)
+	{
+		cout << "Swan_DG_Node[" << i << "]=" /*<< setprecision(16)*/ << sizeof_PerNode[i] << endl;
+		sum = sum + sizeof_PerNode[i];
+
+		i++;
+	}
+	cout << "sum: " << sum << endl;
 }
 
 
